@@ -1,0 +1,82 @@
+[
+  {
+    "id": "base:quest.history",
+    "kind": "quest",
+    "name": "Proof of craftsmanship",
+    "schemaVersion": 1,
+    "objectives": [
+      {
+        "id": "craft",
+        "tracking": "historical",
+        "event": "job.completed",
+        "subjectId": "base:recipe.sword",
+        "amount": 1,
+        "itemId": null,
+        "contribution": "shared",
+        "exclusiveGroup": null
+      }
+    ],
+    "gold": 5,
+    "conditionScript": null
+  },
+  {
+    "id": "base:quest.supplies",
+    "kind": "quest",
+    "name": "Timber commission",
+    "schemaVersion": 1,
+    "objectives": [
+      {
+        "id": "wood",
+        "tracking": "world-state",
+        "event": "inventory.item-created",
+        "subjectId": null,
+        "amount": 3,
+        "itemId": "base:item.wood",
+        "contribution": "consumptive",
+        "exclusiveGroup": null
+      }
+    ],
+    "gold": 8,
+    "conditionScript": null
+  },
+  {
+    "id": "base:quest.exclusive-a",
+    "kind": "quest",
+    "name": "First guild claim",
+    "schemaVersion": 1,
+    "objectives": [
+      {
+        "id": "victory",
+        "tracking": "historical",
+        "event": "combat.victory",
+        "subjectId": "base:encounter.wolves",
+        "amount": 1,
+        "itemId": null,
+        "contribution": "exclusive",
+        "exclusiveGroup": "guild"
+      }
+    ],
+    "gold": 5,
+    "conditionScript": null
+  },
+  {
+    "id": "base:quest.exclusive-b",
+    "kind": "quest",
+    "name": "Second guild claim",
+    "schemaVersion": 1,
+    "objectives": [
+      {
+        "id": "victory",
+        "tracking": "historical",
+        "event": "combat.victory",
+        "subjectId": "base:encounter.wolves",
+        "amount": 1,
+        "itemId": null,
+        "contribution": "exclusive",
+        "exclusiveGroup": "guild"
+      }
+    ],
+    "gold": 5,
+    "conditionScript": null
+  }
+]

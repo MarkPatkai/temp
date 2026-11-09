@@ -1,0 +1,1220 @@
+{
+  "anyOf": [
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "schemaVersion",
+        "kind",
+        "category",
+        "playerControlled",
+        "hp",
+        "speed",
+        "power",
+        "workRate",
+        "traits",
+        "food"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "maxLength": 120,
+          "type": "string"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "kind": {
+          "const": "character",
+          "type": "string"
+        },
+        "category": {
+          "anyOf": [
+            {
+              "const": "permanent",
+              "type": "string"
+            },
+            {
+              "const": "subcontractor",
+              "type": "string"
+            },
+            {
+              "const": "captive",
+              "type": "string"
+            },
+            {
+              "const": "external",
+              "type": "string"
+            },
+            {
+              "const": "world",
+              "type": "string"
+            }
+          ]
+        },
+        "playerControlled": {
+          "type": "boolean"
+        },
+        "hp": {
+          "minimum": 1,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "speed": {
+          "minimum": 1,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "power": {
+          "minimum": 1,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "workRate": {
+          "minimum": 1,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "traits": {
+          "type": "array",
+          "items": {
+            "additionalProperties": false,
+            "type": "object",
+            "required": [
+              "id",
+              "hidden",
+              "workBonus"
+            ],
+            "properties": {
+              "id": {
+                "minLength": 1,
+                "maxLength": 160,
+                "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                "type": "string"
+              },
+              "hidden": {
+                "type": "boolean"
+              },
+              "workBonus": {
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991,
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "food": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "forbidden",
+            "preferred"
+          ],
+          "properties": {
+            "forbidden": {
+              "maxItems": 10000,
+              "type": "array",
+              "items": {
+                "minLength": 1,
+                "maxLength": 160,
+                "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                "type": "string"
+              }
+            },
+            "preferred": {
+              "maxItems": 10000,
+              "type": "array",
+              "items": {
+                "minLength": 1,
+                "maxLength": 160,
+                "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "schemaVersion",
+        "kind",
+        "stackLimit",
+        "price",
+        "equipSlot",
+        "power",
+        "tags"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "maxLength": 120,
+          "type": "string"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "kind": {
+          "const": "item",
+          "type": "string"
+        },
+        "stackLimit": {
+          "minimum": 1,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "price": {
+          "minimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "equipSlot": {
+          "anyOf": [
+            {
+              "const": "hand",
+              "type": "string"
+            },
+            {
+              "const": "body",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "power": {
+          "minimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "tags": {
+          "maxItems": 10000,
+          "type": "array",
+          "items": {
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "schemaVersion",
+        "kind",
+        "instanceLimit",
+        "workstations",
+        "maxWorkers"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "maxLength": 120,
+          "type": "string"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "kind": {
+          "const": "facility",
+          "type": "string"
+        },
+        "instanceLimit": {
+          "minimum": 1,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "workstations": {
+          "minimum": 1,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "maxWorkers": {
+          "minimum": 1,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "schemaVersion",
+        "kind",
+        "facilityId",
+        "work",
+        "inputs",
+        "outputs",
+        "skill"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "maxLength": 120,
+          "type": "string"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "kind": {
+          "const": "recipe",
+          "type": "string"
+        },
+        "facilityId": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "work": {
+          "minimum": 1,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "inputs": {
+          "minItems": 1,
+          "maxItems": 100,
+          "type": "array",
+          "items": {
+            "additionalProperties": false,
+            "type": "object",
+            "required": [
+              "itemId",
+              "quantity"
+            ],
+            "properties": {
+              "itemId": {
+                "minLength": 1,
+                "maxLength": 160,
+                "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                "type": "string"
+              },
+              "quantity": {
+                "minimum": 1,
+                "maximum": 9007199254740991,
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "outputs": {
+          "minItems": 1,
+          "maxItems": 100,
+          "type": "array",
+          "items": {
+            "additionalProperties": false,
+            "type": "object",
+            "required": [
+              "itemId",
+              "quantity"
+            ],
+            "properties": {
+              "itemId": {
+                "minLength": 1,
+                "maxLength": 160,
+                "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                "type": "string"
+              },
+              "quantity": {
+                "minimum": 1,
+                "maximum": 9007199254740991,
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "skill": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "schemaVersion",
+        "kind",
+        "facilityId",
+        "work",
+        "unlockId"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "maxLength": 120,
+          "type": "string"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "kind": {
+          "const": "research",
+          "type": "string"
+        },
+        "facilityId": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "work": {
+          "minimum": 1,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "unlockId": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "schemaVersion",
+        "kind",
+        "locationType",
+        "recovery",
+        "explorationWork",
+        "encounterId"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "maxLength": 120,
+          "type": "string"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "kind": {
+          "const": "location",
+          "type": "string"
+        },
+        "locationType": {
+          "anyOf": [
+            {
+              "const": "haven",
+              "type": "string"
+            },
+            {
+              "const": "settlement",
+              "type": "string"
+            },
+            {
+              "const": "wilderness",
+              "type": "string"
+            },
+            {
+              "const": "dungeon",
+              "type": "string"
+            }
+          ]
+        },
+        "recovery": {
+          "minimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "explorationWork": {
+          "minimum": 1,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "encounterId": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "schemaVersion",
+        "kind",
+        "from",
+        "to",
+        "ticks",
+        "requiredUnlock"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "maxLength": 120,
+          "type": "string"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "kind": {
+          "const": "connection",
+          "type": "string"
+        },
+        "from": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "to": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "ticks": {
+          "minimum": 1,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "requiredUnlock": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "schemaVersion",
+        "kind",
+        "style",
+        "reach",
+        "power",
+        "stamina",
+        "mana",
+        "accuracyByDistance"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "maxLength": 120,
+          "type": "string"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "kind": {
+          "const": "ability",
+          "type": "string"
+        },
+        "style": {
+          "anyOf": [
+            {
+              "const": "melee",
+              "type": "string"
+            },
+            {
+              "const": "extended",
+              "type": "string"
+            },
+            {
+              "const": "ranged",
+              "type": "string"
+            },
+            {
+              "const": "magic",
+              "type": "string"
+            }
+          ]
+        },
+        "reach": {
+          "minimum": 1,
+          "maximum": 3,
+          "type": "integer"
+        },
+        "power": {
+          "minimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "stamina": {
+          "minimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "mana": {
+          "minimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "accuracyByDistance": {
+          "minItems": 5,
+          "maxItems": 5,
+          "type": "array",
+          "items": {
+            "minimum": 0,
+            "maximum": 10000,
+            "type": "integer"
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "schemaVersion",
+        "kind",
+        "enemies",
+        "abilities",
+        "gold",
+        "surrender"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "maxLength": 120,
+          "type": "string"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "kind": {
+          "const": "encounter",
+          "type": "string"
+        },
+        "enemies": {
+          "minItems": 1,
+          "maxItems": 8,
+          "type": "array",
+          "items": {
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+            "type": "string"
+          }
+        },
+        "abilities": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+            "type": "string"
+          }
+        },
+        "gold": {
+          "minimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "surrender": {
+          "type": "boolean"
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "schemaVersion",
+        "kind",
+        "objectives",
+        "gold",
+        "conditionScript"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "maxLength": 120,
+          "type": "string"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "kind": {
+          "const": "quest",
+          "type": "string"
+        },
+        "objectives": {
+          "minItems": 1,
+          "maxItems": 30,
+          "type": "array",
+          "items": {
+            "additionalProperties": false,
+            "type": "object",
+            "required": [
+              "id",
+              "tracking",
+              "event",
+              "subjectId",
+              "amount",
+              "itemId",
+              "contribution",
+              "exclusiveGroup"
+            ],
+            "properties": {
+              "id": {
+                "minLength": 1,
+                "maxLength": 160,
+                "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                "type": "string"
+              },
+              "tracking": {
+                "anyOf": [
+                  {
+                    "const": "world-state",
+                    "type": "string"
+                  },
+                  {
+                    "const": "historical",
+                    "type": "string"
+                  },
+                  {
+                    "const": "commissioned",
+                    "type": "string"
+                  }
+                ]
+              },
+              "event": {
+                "minLength": 1,
+                "maxLength": 120,
+                "type": "string"
+              },
+              "subjectId": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "maxLength": 160,
+                    "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "amount": {
+                "minimum": 1,
+                "maximum": 9007199254740991,
+                "type": "integer"
+              },
+              "itemId": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "maxLength": 160,
+                    "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "contribution": {
+                "anyOf": [
+                  {
+                    "const": "shared",
+                    "type": "string"
+                  },
+                  {
+                    "const": "exclusive",
+                    "type": "string"
+                  },
+                  {
+                    "const": "consumptive",
+                    "type": "string"
+                  }
+                ]
+              },
+              "exclusiveGroup": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "maxLength": 160,
+                    "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "gold": {
+          "minimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "conditionScript": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "schemaVersion",
+        "kind",
+        "characterId",
+        "originId",
+        "fee",
+        "travelTicks",
+        "wagePerDay",
+        "minimumDays",
+        "serviceOutputs"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "maxLength": 120,
+          "type": "string"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "kind": {
+          "const": "recruit",
+          "type": "string"
+        },
+        "characterId": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "originId": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "fee": {
+          "minimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "travelTicks": {
+          "minimum": 1,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "wagePerDay": {
+          "minimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "minimumDays": {
+          "minimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "serviceOutputs": {
+          "maxItems": 10,
+          "type": "array",
+          "items": {
+            "additionalProperties": false,
+            "type": "object",
+            "required": [
+              "itemId",
+              "quantity"
+            ],
+            "properties": {
+              "itemId": {
+                "minLength": 1,
+                "maxLength": 160,
+                "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                "type": "string"
+              },
+              "quantity": {
+                "minimum": 1,
+                "maximum": 9007199254740991,
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "schemaVersion",
+        "kind",
+        "locationId",
+        "refreshTicks",
+        "stock"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "maxLength": 120,
+          "type": "string"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "kind": {
+          "const": "market",
+          "type": "string"
+        },
+        "locationId": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "refreshTicks": {
+          "minimum": 1,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "stock": {
+          "minItems": 1,
+          "maxItems": 100,
+          "type": "array",
+          "items": {
+            "additionalProperties": false,
+            "type": "object",
+            "required": [
+              "itemId",
+              "quantity"
+            ],
+            "properties": {
+              "itemId": {
+                "minLength": 1,
+                "maxLength": 160,
+                "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                "type": "string"
+              },
+              "quantity": {
+                "minimum": 1,
+                "maximum": 9007199254740991,
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "schemaVersion",
+        "kind",
+        "file",
+        "exportName",
+        "mode",
+        "capabilities",
+        "apiVersion"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "maxLength": 120,
+          "type": "string"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "kind": {
+          "const": "script",
+          "type": "string"
+        },
+        "file": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "exportName": {
+          "const": "run",
+          "type": "string"
+        },
+        "mode": {
+          "anyOf": [
+            {
+              "const": "condition",
+              "type": "string"
+            },
+            {
+              "const": "effect",
+              "type": "string"
+            }
+          ]
+        },
+        "capabilities": {
+          "maxItems": 1,
+          "type": "array",
+          "items": {
+            "const": "quest.claim",
+            "type": "string"
+          }
+        },
+        "apiVersion": {
+          "const": 1,
+          "type": "number"
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "schemaVersion",
+        "kind",
+        "locationId",
+        "characters",
+        "facilities",
+        "items",
+        "storageCapacity",
+        "gold"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "maxLength": 120,
+          "type": "string"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "kind": {
+          "const": "start",
+          "type": "string"
+        },
+        "locationId": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "characters": {
+          "minItems": 1,
+          "maxItems": 10,
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+            "type": "string"
+          }
+        },
+        "facilities": {
+          "maxItems": 10000,
+          "type": "array",
+          "items": {
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+            "type": "string"
+          }
+        },
+        "items": {
+          "minItems": 1,
+          "maxItems": 100,
+          "type": "array",
+          "items": {
+            "additionalProperties": false,
+            "type": "object",
+            "required": [
+              "itemId",
+              "quantity"
+            ],
+            "properties": {
+              "itemId": {
+                "minLength": 1,
+                "maxLength": 160,
+                "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                "type": "string"
+              },
+              "quantity": {
+                "minimum": 1,
+                "maximum": 9007199254740991,
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "storageCapacity": {
+          "minimum": 1,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        },
+        "gold": {
+          "minimum": 0,
+          "maximum": 9007199254740991,
+          "type": "integer"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "additionalProperties": false,
+  "type": "object",
+  "required": [
+    "packId",
+    "version",
+    "schemaVersion",
+    "files",
+    "scripts"
+  ],
+  "properties": {
+    "packId": {
+      "minLength": 1,
+      "maxLength": 160,
+      "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+      "type": "string"
+    },
+    "version": {
+      "minLength": 1,
+      "maxLength": 160,
+      "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+      "type": "string"
+    },
+    "schemaVersion": {
+      "const": 1,
+      "type": "number"
+    },
+    "files": {
+      "minItems": 1,
+      "maxItems": 200,
+      "type": "array",
+      "items": {
+        "minLength": 1,
+        "maxLength": 160,
+        "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+        "type": "string"
+      }
+    },
+    "scripts": {
+      "maxItems": 100,
+      "type": "array",
+      "items": {
+        "minLength": 1,
+        "maxLength": 160,
+        "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+        "type": "string"
+      }
+    }
+  }
+}

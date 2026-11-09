@@ -1,0 +1,38 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "cli": { "analytics": false, "cache": { "enabled": false } },
+  "projects": {
+    "game": {
+      "projectType": "application", "root": "apps/game", "sourceRoot": "apps/game/src",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "outputPath": "dist/game", "browser": "apps/game/src/main.ts",
+            "index": "apps/game/src/index.html", "tsConfig": "apps/game/tsconfig.app.json",
+            "assets": [
+              { "glob": "**/*", "input": "content", "output": "content" },
+              { "glob": "**/*", "input": "apps/game/public", "output": "/" }
+            ],
+            "styles": ["apps/game/src/styles.css"],
+            "allowedCommonJsDependencies": ["wasmoon", "ajv"]
+          },
+          "configurations": {
+            "production": { "outputHashing": "all", "optimization": { "scripts": true, "styles": { "minify": true, "inlineCritical": false }, "fonts": false }, "budgets": [{ "type": "initial", "maximumWarning": "3MB", "maximumError": "4MB" }] },
+            "development": { "optimization": false, "sourceMap": true }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "development": { "buildTarget": "game:build:development" },
+            "production": { "buildTarget": "game:build:production" }
+          },
+          "defaultConfiguration": "development"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "base:ability.slash",
+    "kind": "ability",
+    "name": "Strike",
+    "schemaVersion": 1,
+    "style": "melee",
+    "reach": 1,
+    "power": 2,
+    "stamina": 0,
+    "mana": 0,
+    "accuracyByDistance": [
+      10000,
+      9500,
+      8500,
+      7000,
+      5500
+    ]
+  },
+  {
+    "id": "base:ability.reach",
+    "kind": "ability",
+    "name": "Long thrust",
+    "schemaVersion": 1,
+    "style": "extended",
+    "reach": 3,
+    "power": 1,
+    "stamina": 2,
+    "mana": 0,
+    "accuracyByDistance": [
+      10000,
+      9500,
+      8500,
+      7000,
+      5500
+    ]
+  },
+  {
+    "id": "base:ability.arrow",
+    "kind": "ability",
+    "name": "Aimed shot",
+    "schemaVersion": 1,
+    "style": "ranged",
+    "reach": 3,
+    "power": 3,
+    "stamina": 3,
+    "mana": 0,
+    "accuracyByDistance": [
+      10000,
+      9500,
+      8500,
+      7000,
+      5500
+    ]
+  },
+  {
+    "id": "base:ability.spark",
+    "kind": "ability",
+    "name": "Ember",
+    "schemaVersion": 1,
+    "style": "magic",
+    "reach": 3,
+    "power": 4,
+    "stamina": 0,
+    "mana": 4,
+    "accuracyByDistance": [
+      10000,
+      9500,
+      8500,
+      7000,
+      5500
+    ]
+  }
+]

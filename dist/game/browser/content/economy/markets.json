@@ -1,0 +1,20 @@
+[
+  {
+    "id": "base:market.town",
+    "kind": "market",
+    "name": "Stonebridge market",
+    "schemaVersion": 1,
+    "locationId": "base:location.town",
+    "refreshTicks": 600,
+    "stock": [
+      {
+        "itemId": "base:item.wood",
+        "quantity": 10
+      },
+      {
+        "itemId": "base:item.iron",
+        "quantity": 10
+      }
+    ]
+  }
+]

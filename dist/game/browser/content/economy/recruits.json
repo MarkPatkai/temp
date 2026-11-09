@@ -1,0 +1,33 @@
+[
+  {
+    "id": "base:recruit.rowan",
+    "kind": "recruit",
+    "name": "Hire Rowan",
+    "schemaVersion": 1,
+    "characterId": "base:character.rowan",
+    "originId": "base:location.town",
+    "fee": 10,
+    "travelTicks": 9,
+    "wagePerDay": 4,
+    "minimumDays": 2,
+    "serviceOutputs": []
+  },
+  {
+    "id": "base:recruit.supplier",
+    "kind": "recruit",
+    "name": "Order timber service",
+    "schemaVersion": 1,
+    "characterId": "base:character.supplier",
+    "originId": "base:location.town",
+    "fee": 3,
+    "travelTicks": 1,
+    "wagePerDay": 0,
+    "minimumDays": 0,
+    "serviceOutputs": [
+      {
+        "itemId": "base:item.wood",
+        "quantity": 2
+      }
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+[
+  {
+    "id": "base:research.paths",
+    "kind": "research",
+    "name": "Old paths",
+    "schemaVersion": 1,
+    "facilityId": "base:facility.forge",
+    "work": 10,
+    "unlockId": "base:unlock.dungeon"
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Main window with core capabilities; save commands validate slot names and app-data paths.",
+  "windows": ["main"],
+  "permissions": ["core:default"]
+}

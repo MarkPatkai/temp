@@ -1,0 +1,82 @@
+[
+  {
+    "id": "base:location.haven",
+    "kind": "location",
+    "name": "Thornhaven",
+    "schemaVersion": 1,
+    "locationType": "haven",
+    "recovery": 10,
+    "explorationWork": 4,
+    "encounterId": null
+  },
+  {
+    "id": "base:location.forest",
+    "kind": "location",
+    "name": "Briarwood",
+    "schemaVersion": 1,
+    "locationType": "wilderness",
+    "recovery": 2,
+    "explorationWork": 3,
+    "encounterId": "base:encounter.wolves"
+  },
+  {
+    "id": "base:location.town",
+    "kind": "location",
+    "name": "Stonebridge",
+    "schemaVersion": 1,
+    "locationType": "settlement",
+    "recovery": 8,
+    "explorationWork": 4,
+    "encounterId": null
+  },
+  {
+    "id": "base:location.dungeon",
+    "kind": "location",
+    "name": "The Hollow Gate",
+    "schemaVersion": 1,
+    "locationType": "dungeon",
+    "recovery": 1,
+    "explorationWork": 4,
+    "encounterId": "base:encounter.wolves"
+  },
+  {
+    "id": "base:connection.haven-forest",
+    "kind": "connection",
+    "name": "Briar trail",
+    "schemaVersion": 1,
+    "from": "base:location.haven",
+    "to": "base:location.forest",
+    "ticks": 5,
+    "requiredUnlock": null
+  },
+  {
+    "id": "base:connection.forest-town",
+    "kind": "connection",
+    "name": "River path",
+    "schemaVersion": 1,
+    "from": "base:location.forest",
+    "to": "base:location.town",
+    "ticks": 4,
+    "requiredUnlock": null
+  },
+  {
+    "id": "base:connection.haven-town",
+    "kind": "connection",
+    "name": "Old road",
+    "schemaVersion": 1,
+    "from": "base:location.haven",
+    "to": "base:location.town",
+    "ticks": 12,
+    "requiredUnlock": null
+  },
+  {
+    "id": "base:connection.forest-dungeon",
+    "kind": "connection",
+    "name": "Hidden steps",
+    "schemaVersion": 1,
+    "from": "base:location.forest",
+    "to": "base:location.dungeon",
+    "ticks": 3,
+    "requiredUnlock": "base:unlock.dungeon"
+  }
+]

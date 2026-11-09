@@ -1,0 +1,11 @@
+[
+  {
+    "id": "base:facility.forge",
+    "kind": "facility",
+    "name": "Forge",
+    "schemaVersion": 1,
+    "instanceLimit": 2,
+    "workstations": 2,
+    "maxWorkers": 1
+  }
+]

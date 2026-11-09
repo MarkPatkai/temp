@@ -1,0 +1,127 @@
+[
+  {
+    "id": "base:character.ada",
+    "kind": "character",
+    "name": "Ada Thorn",
+    "schemaVersion": 1,
+    "category": "permanent",
+    "playerControlled": true,
+    "hp": 40,
+    "speed": 12,
+    "power": 12,
+    "workRate": 4,
+    "traits": [
+      {
+        "id": "base:trait.patient",
+        "hidden": true,
+        "workBonus": 1000
+      }
+    ],
+    "food": {
+      "forbidden": [],
+      "preferred": []
+    }
+  },
+  {
+    "id": "base:character.bren",
+    "kind": "character",
+    "name": "Bren Ashford",
+    "schemaVersion": 1,
+    "category": "permanent",
+    "playerControlled": true,
+    "hp": 35,
+    "speed": 10,
+    "power": 10,
+    "workRate": 3,
+    "traits": [],
+    "food": {
+      "forbidden": [],
+      "preferred": []
+    }
+  },
+  {
+    "id": "base:character.lyra",
+    "kind": "character",
+    "name": "Lyra Vale",
+    "schemaVersion": 1,
+    "category": "permanent",
+    "playerControlled": true,
+    "hp": 30,
+    "speed": 11,
+    "power": 8,
+    "workRate": 3,
+    "traits": [],
+    "food": {
+      "forbidden": [],
+      "preferred": []
+    }
+  },
+  {
+    "id": "base:character.wolf",
+    "kind": "character",
+    "name": "Grey Wolf",
+    "schemaVersion": 1,
+    "category": "world",
+    "playerControlled": false,
+    "hp": 18,
+    "speed": 7,
+    "power": 2,
+    "workRate": 1,
+    "traits": [],
+    "food": {
+      "forbidden": [],
+      "preferred": []
+    }
+  },
+  {
+    "id": "base:character.stalker",
+    "kind": "character",
+    "name": "Forest Stalker",
+    "schemaVersion": 1,
+    "category": "world",
+    "playerControlled": false,
+    "hp": 20,
+    "speed": 6,
+    "power": 3,
+    "workRate": 1,
+    "traits": [],
+    "food": {
+      "forbidden": [],
+      "preferred": []
+    }
+  },
+  {
+    "id": "base:character.rowan",
+    "kind": "character",
+    "name": "Rowan, guild artisan",
+    "schemaVersion": 1,
+    "category": "subcontractor",
+    "playerControlled": false,
+    "hp": 32,
+    "speed": 9,
+    "power": 8,
+    "workRate": 5,
+    "traits": [],
+    "food": {
+      "forbidden": [],
+      "preferred": []
+    }
+  },
+  {
+    "id": "base:character.supplier",
+    "kind": "character",
+    "name": "Timber supplier",
+    "schemaVersion": 1,
+    "category": "external",
+    "playerControlled": false,
+    "hp": 20,
+    "speed": 5,
+    "power": 1,
+    "workRate": 1,
+    "traits": [],
+    "food": {
+      "forbidden": [],
+      "preferred": []
+    }
+  }
+]

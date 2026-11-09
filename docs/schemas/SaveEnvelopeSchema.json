@@ -1,0 +1,34 @@
+{
+  "additionalProperties": false,
+  "type": "object",
+  "required": [
+    "format",
+    "schemaVersion",
+    "engineVersion",
+    "contentFingerprint",
+    "checksum",
+    "state"
+  ],
+  "properties": {
+    "format": {
+      "const": "haven-save",
+      "type": "string"
+    },
+    "schemaVersion": {
+      "minimum": 0,
+      "maximum": 1,
+      "type": "integer"
+    },
+    "engineVersion": {
+      "type": "string"
+    },
+    "contentFingerprint": {
+      "type": "string"
+    },
+    "checksum": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "state": {}
+  }
+}

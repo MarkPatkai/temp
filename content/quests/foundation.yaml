@@ -1,0 +1,31 @@
+- id: base:quest.foundation
+  kind: quest
+  schemaVersion: 1
+  name: Architecture verification
+  objectives:
+    - id: forge
+      tracking: commissioned
+      event: job.completed
+      subjectId: base:recipe.sword
+      amount: 1
+      itemId: null
+      contribution: shared
+      exclusiveGroup: null
+    - id: survey
+      tracking: commissioned
+      event: exploration.surveyed
+      subjectId: base:location.forest
+      amount: 1
+      itemId: null
+      contribution: shared
+      exclusiveGroup: null
+    - id: victory
+      tracking: commissioned
+      event: combat.victory
+      subjectId: base:encounter.wolves
+      amount: 1
+      itemId: null
+      contribution: shared
+      exclusiveGroup: null
+  gold: 50
+  conditionScript: base:script.quest-ready

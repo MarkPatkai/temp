@@ -1,0 +1,20 @@
+[
+  {
+    "id": "base:encounter.wolves",
+    "kind": "encounter",
+    "name": "Predators in the brush",
+    "schemaVersion": 1,
+    "enemies": [
+      "base:character.wolf",
+      "base:character.stalker"
+    ],
+    "abilities": [
+      "base:ability.slash",
+      "base:ability.reach",
+      "base:ability.arrow",
+      "base:ability.spark"
+    ],
+    "gold": 12,
+    "surrender": false
+  }
+]

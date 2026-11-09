@@ -1,0 +1,2118 @@
+{
+  "anyOf": [
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "clock.configure",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "paused",
+            "speed"
+          ],
+          "properties": {
+            "paused": {
+              "type": "boolean"
+            },
+            "speed": {
+              "anyOf": [
+                {
+                  "const": 1,
+                  "type": "number"
+                },
+                {
+                  "const": 2,
+                  "type": "number"
+                },
+                {
+                  "const": 4,
+                  "type": "number"
+                },
+                {
+                  "const": 8,
+                  "type": "number"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "haven.build",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "facilityDefinitionId"
+          ],
+          "properties": {
+            "facilityDefinitionId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "jobs.assign",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "characterId",
+            "facilityId",
+            "protected",
+            "flexible"
+          ],
+          "properties": {
+            "characterId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "facilityId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "protected": {
+              "type": "boolean"
+            },
+            "flexible": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "jobs.unassign",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "characterId"
+          ],
+          "properties": {
+            "characterId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "jobs.create",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "recipeId",
+            "priority"
+          ],
+          "properties": {
+            "recipeId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "priority": {
+              "minimum": 0,
+              "maximum": 9007199254740991,
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "jobs.cancel",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "orderId"
+          ],
+          "properties": {
+            "orderId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "research.start",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "researchId",
+            "priority"
+          ],
+          "properties": {
+            "researchId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "priority": {
+              "minimum": 0,
+              "maximum": 9007199254740991,
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "equipment.equip",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "characterId",
+            "itemId",
+            "loadout"
+          ],
+          "properties": {
+            "characterId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "itemId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "loadout": {
+              "anyOf": [
+                {
+                  "const": "work",
+                  "type": "string"
+                },
+                {
+                  "const": "combat",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "equipment.unequip",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "characterId",
+            "slot"
+          ],
+          "properties": {
+            "characterId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "slot": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "equipment.activate",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "characterId",
+            "loadout"
+          ],
+          "properties": {
+            "characterId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "loadout": {
+              "anyOf": [
+                {
+                  "const": "work",
+                  "type": "string"
+                },
+                {
+                  "const": "combat",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "outfits.apply",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "characterId",
+            "itemDefinitionId",
+            "loadout"
+          ],
+          "properties": {
+            "characterId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "itemDefinitionId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "loadout": {
+              "anyOf": [
+                {
+                  "const": "work",
+                  "type": "string"
+                },
+                {
+                  "const": "combat",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "inventory.protect",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "itemId",
+            "protected"
+          ],
+          "properties": {
+            "itemId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "protected": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "inventory.transfer",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "itemId",
+            "ownerId"
+          ],
+          "properties": {
+            "itemId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "ownerId": {
+              "anyOf": [
+                {
+                  "minLength": 1,
+                  "maxLength": 160,
+                  "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "inventory.split",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "itemId",
+            "quantity"
+          ],
+          "properties": {
+            "itemId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "quantity": {
+              "minimum": 1,
+              "maximum": 9007199254740991,
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "inventory.merge",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "sourceId",
+            "targetId"
+          ],
+          "properties": {
+            "sourceId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "targetId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "inventory.claim",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "itemId",
+            "quantity"
+          ],
+          "properties": {
+            "itemId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "quantity": {
+              "minimum": 1,
+              "maximum": 9007199254740991,
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "inventory.sell-surplus",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "itemId",
+            "keep"
+          ],
+          "properties": {
+            "itemId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "keep": {
+              "minimum": 0,
+              "maximum": 9007199254740991,
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "parties.create",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "name",
+            "members"
+          ],
+          "properties": {
+            "name": {
+              "minLength": 1,
+              "maxLength": 120,
+              "type": "string"
+            },
+            "members": {
+              "minItems": 1,
+              "maxItems": 6,
+              "uniqueItems": true,
+              "type": "array",
+              "items": {
+                "minLength": 1,
+                "maxLength": 160,
+                "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "parties.formation",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "partyId",
+            "characterId",
+            "row"
+          ],
+          "properties": {
+            "partyId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "characterId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "row": {
+              "anyOf": [
+                {
+                  "const": "front",
+                  "type": "string"
+                },
+                {
+                  "const": "middle",
+                  "type": "string"
+                },
+                {
+                  "const": "back",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "travel.begin",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "partyId",
+            "destinationId",
+            "waypoints"
+          ],
+          "properties": {
+            "partyId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "destinationId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "waypoints": {
+              "maxItems": 20,
+              "type": "array",
+              "items": {
+                "minLength": 1,
+                "maxLength": 160,
+                "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "travel.cancel",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "partyId"
+          ],
+          "properties": {
+            "partyId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "exploration.start",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "partyId"
+          ],
+          "properties": {
+            "partyId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "exploration.stop",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "partyId"
+          ],
+          "properties": {
+            "partyId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "exploration.decide",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "partyId",
+            "decision"
+          ],
+          "properties": {
+            "partyId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "decision": {
+              "anyOf": [
+                {
+                  "const": "fight",
+                  "type": "string"
+                },
+                {
+                  "const": "avoid",
+                  "type": "string"
+                },
+                {
+                  "const": "retreat",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "combat.act",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "combatId",
+            "actorId",
+            "targetId",
+            "abilityId"
+          ],
+          "properties": {
+            "combatId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "actorId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "targetId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "abilityId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "combat.escape",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "combatId",
+            "actorId"
+          ],
+          "properties": {
+            "combatId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "actorId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "combat.enemy-turn",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "combatId"
+          ],
+          "properties": {
+            "combatId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "characters.rest",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "characterId"
+          ],
+          "properties": {
+            "characterId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "characters.stop-rest",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "characterId"
+          ],
+          "properties": {
+            "characterId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "characters.designate-pc",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "characterId"
+          ],
+          "properties": {
+            "characterId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "quests.accept",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "questDefinitionId"
+          ],
+          "properties": {
+            "questDefinitionId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "quests.claim",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "questId"
+          ],
+          "properties": {
+            "questId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "quests.abandon",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "questId"
+          ],
+          "properties": {
+            "questId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "rules.create",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "rule"
+          ],
+          "properties": {
+            "rule": {
+              "additionalProperties": false,
+              "type": "object",
+              "required": [
+                "id",
+                "enabled",
+                "priority",
+                "trigger",
+                "condition",
+                "action",
+                "cooldownTicks",
+                "lastTick",
+                "lastEvent",
+                "lastError"
+              ],
+              "properties": {
+                "id": {
+                  "minLength": 1,
+                  "maxLength": 160,
+                  "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                  "type": "string"
+                },
+                "enabled": {
+                  "type": "boolean"
+                },
+                "priority": {
+                  "minimum": 0,
+                  "maximum": 9007199254740991,
+                  "type": "integer"
+                },
+                "trigger": {
+                  "anyOf": [
+                    {
+                      "additionalProperties": false,
+                      "type": "object",
+                      "required": [
+                        "kind",
+                        "ticks"
+                      ],
+                      "properties": {
+                        "kind": {
+                          "const": "interval",
+                          "type": "string"
+                        },
+                        "ticks": {
+                          "minimum": 1,
+                          "maximum": 9007199254740991,
+                          "type": "integer"
+                        }
+                      }
+                    },
+                    {
+                      "additionalProperties": false,
+                      "type": "object",
+                      "required": [
+                        "kind",
+                        "event"
+                      ],
+                      "properties": {
+                        "kind": {
+                          "const": "event",
+                          "type": "string"
+                        },
+                        "event": {
+                          "minLength": 1,
+                          "maxLength": 160,
+                          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "condition": {
+                  "additionalProperties": false,
+                  "type": "object",
+                  "required": [
+                    "itemId",
+                    "below"
+                  ],
+                  "properties": {
+                    "itemId": {
+                      "anyOf": [
+                        {
+                          "minLength": 1,
+                          "maxLength": 160,
+                          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "below": {
+                      "minimum": 0,
+                      "maximum": 9007199254740991,
+                      "type": "integer"
+                    }
+                  }
+                },
+                "action": {
+                  "anyOf": [
+                    {
+                      "additionalProperties": false,
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "payload"
+                      ],
+                      "properties": {
+                        "type": {
+                          "const": "jobs.create",
+                          "type": "string"
+                        },
+                        "payload": {
+                          "additionalProperties": false,
+                          "type": "object",
+                          "required": [
+                            "recipeId",
+                            "priority"
+                          ],
+                          "properties": {
+                            "recipeId": {
+                              "minLength": 1,
+                              "maxLength": 160,
+                              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                              "type": "string"
+                            },
+                            "priority": {
+                              "minimum": 0,
+                              "maximum": 9007199254740991,
+                              "type": "integer"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "additionalProperties": false,
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "payload"
+                      ],
+                      "properties": {
+                        "type": {
+                          "const": "outfits.apply",
+                          "type": "string"
+                        },
+                        "payload": {
+                          "additionalProperties": false,
+                          "type": "object",
+                          "required": [
+                            "characterId",
+                            "itemDefinitionId",
+                            "loadout"
+                          ],
+                          "properties": {
+                            "characterId": {
+                              "minLength": 1,
+                              "maxLength": 160,
+                              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                              "type": "string"
+                            },
+                            "itemDefinitionId": {
+                              "minLength": 1,
+                              "maxLength": 160,
+                              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                              "type": "string"
+                            },
+                            "loadout": {
+                              "anyOf": [
+                                {
+                                  "const": "work",
+                                  "type": "string"
+                                },
+                                {
+                                  "const": "combat",
+                                  "type": "string"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "additionalProperties": false,
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "payload"
+                      ],
+                      "properties": {
+                        "type": {
+                          "const": "market.buy",
+                          "type": "string"
+                        },
+                        "payload": {
+                          "additionalProperties": false,
+                          "type": "object",
+                          "required": [
+                            "marketId",
+                            "itemId",
+                            "quantity"
+                          ],
+                          "properties": {
+                            "marketId": {
+                              "minLength": 1,
+                              "maxLength": 160,
+                              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                              "type": "string"
+                            },
+                            "itemId": {
+                              "minLength": 1,
+                              "maxLength": 160,
+                              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                              "type": "string"
+                            },
+                            "quantity": {
+                              "minimum": 1,
+                              "maximum": 9007199254740991,
+                              "type": "integer"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "additionalProperties": false,
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "payload"
+                      ],
+                      "properties": {
+                        "type": {
+                          "const": "inventory.sell-surplus",
+                          "type": "string"
+                        },
+                        "payload": {
+                          "additionalProperties": false,
+                          "type": "object",
+                          "required": [
+                            "itemId",
+                            "keep"
+                          ],
+                          "properties": {
+                            "itemId": {
+                              "minLength": 1,
+                              "maxLength": 160,
+                              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                              "type": "string"
+                            },
+                            "keep": {
+                              "minimum": 0,
+                              "maximum": 9007199254740991,
+                              "type": "integer"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "additionalProperties": false,
+                      "type": "object",
+                      "required": [
+                        "type",
+                        "payload"
+                      ],
+                      "properties": {
+                        "type": {
+                          "const": "exploration.start",
+                          "type": "string"
+                        },
+                        "payload": {
+                          "additionalProperties": false,
+                          "type": "object",
+                          "required": [
+                            "partyId"
+                          ],
+                          "properties": {
+                            "partyId": {
+                              "minLength": 1,
+                              "maxLength": 160,
+                              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                "cooldownTicks": {
+                  "minimum": 1,
+                  "maximum": 9007199254740991,
+                  "type": "integer"
+                },
+                "lastTick": {
+                  "anyOf": [
+                    {
+                      "const": -1,
+                      "type": "number"
+                    },
+                    {
+                      "minimum": 0,
+                      "maximum": 9007199254740991,
+                      "type": "integer"
+                    }
+                  ]
+                },
+                "lastEvent": {
+                  "minimum": 0,
+                  "maximum": 9007199254740991,
+                  "type": "integer"
+                },
+                "lastError": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "rules.enable",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "ruleId",
+            "enabled"
+          ],
+          "properties": {
+            "ruleId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "enabled": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "rules.delete",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "ruleId"
+          ],
+          "properties": {
+            "ruleId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "market.open",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "marketId",
+            "negotiatorId"
+          ],
+          "properties": {
+            "marketId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "negotiatorId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "market.buy",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "marketId",
+            "itemId",
+            "quantity"
+          ],
+          "properties": {
+            "marketId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "itemId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "quantity": {
+              "minimum": 1,
+              "maximum": 9007199254740991,
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "contracts.pay",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "contractId"
+          ],
+          "properties": {
+            "contractId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "recruitment.accept",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "recruitId"
+          ],
+          "properties": {
+            "recruitId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "notifications.ack",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "notificationId"
+          ],
+          "properties": {
+            "notificationId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "scripts.execute",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "scriptId",
+            "questId"
+          ],
+          "properties": {
+            "scriptId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "questId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

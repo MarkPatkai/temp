@@ -1,0 +1,37 @@
+[
+  {
+    "id": "base:start.default",
+    "kind": "start",
+    "name": "Foundation world",
+    "schemaVersion": 1,
+    "locationId": "base:location.haven",
+    "characters": [
+      "base:character.ada",
+      "base:character.bren",
+      "base:character.lyra"
+    ],
+    "facilities": [
+      "base:facility.forge"
+    ],
+    "items": [
+      {
+        "itemId": "base:item.wood",
+        "quantity": 10
+      },
+      {
+        "itemId": "base:item.iron",
+        "quantity": 8
+      },
+      {
+        "itemId": "base:item.sword",
+        "quantity": 1
+      },
+      {
+        "itemId": "base:item.robe",
+        "quantity": 1
+      }
+    ],
+    "storageCapacity": 12,
+    "gold": 100
+  }
+]

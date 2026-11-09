@@ -1,0 +1,27 @@
+[
+  {
+    "id": "base:recipe.sword",
+    "kind": "recipe",
+    "name": "Forge an iron sword",
+    "schemaVersion": 1,
+    "facilityId": "base:facility.forge",
+    "work": 12,
+    "inputs": [
+      {
+        "itemId": "base:item.wood",
+        "quantity": 3
+      },
+      {
+        "itemId": "base:item.iron",
+        "quantity": 2
+      }
+    ],
+    "outputs": [
+      {
+        "itemId": "base:item.sword",
+        "quantity": 1
+      }
+    ],
+    "skill": "smithing"
+  }
+]

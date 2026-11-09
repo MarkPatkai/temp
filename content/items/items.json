@@ -1,0 +1,54 @@
+[
+  {
+    "id": "base:item.wood",
+    "kind": "item",
+    "name": "Timber",
+    "schemaVersion": 1,
+    "stackLimit": 20,
+    "price": 2,
+    "equipSlot": null,
+    "power": 0,
+    "tags": [
+      "material"
+    ]
+  },
+  {
+    "id": "base:item.iron",
+    "kind": "item",
+    "name": "Iron ingots",
+    "schemaVersion": 1,
+    "stackLimit": 20,
+    "price": 5,
+    "equipSlot": null,
+    "power": 0,
+    "tags": [
+      "material"
+    ]
+  },
+  {
+    "id": "base:item.sword",
+    "kind": "item",
+    "name": "Iron sword",
+    "schemaVersion": 1,
+    "stackLimit": 1,
+    "price": 25,
+    "equipSlot": "hand",
+    "power": 4,
+    "tags": [
+      "weapon"
+    ]
+  },
+  {
+    "id": "base:item.robe",
+    "kind": "item",
+    "name": "Linen robe",
+    "schemaVersion": 1,
+    "stackLimit": 1,
+    "price": 15,
+    "equipSlot": "body",
+    "power": 0,
+    "tags": [
+      "armor"
+    ]
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Haven Foundation",
+  "version": "0.1.0-alpha.1",
+  "identifier": "game.haven.foundation",
+  "build": {
+    "beforeDevCommand": "npm --prefix ../.. start",
+    "beforeBuildCommand": "npm --prefix ../.. run build",
+    "devUrl": "http://127.0.0.1:4200",
+    "frontendDist": "../../../dist/game/browser"
+  },
+  "app": {
+    "windows": [{ "label": "main", "title": "Haven · Foundation", "width": 1440, "height": 960, "minWidth": 800, "minHeight": 650 }],
+    "security": { "csp": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' ipc: http://ipc.localhost; object-src 'none'" }
+  },
+  "bundle": { "active": true, "targets": "all", "icon": ["icons/icon.png", "icons/icon.ico", "icons/icon.icns"] }
+}

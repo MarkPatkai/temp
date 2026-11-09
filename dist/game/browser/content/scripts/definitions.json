@@ -1,0 +1,26 @@
+[
+  {
+    "id": "base:script.quest-ready",
+    "kind": "script",
+    "name": "Check quest readiness",
+    "schemaVersion": 1,
+    "file": "scripts/quest-ready.lua",
+    "exportName": "run",
+    "mode": "condition",
+    "capabilities": [],
+    "apiVersion": 1
+  },
+  {
+    "id": "base:script.claim-quest",
+    "kind": "script",
+    "name": "Claim a ready quest",
+    "schemaVersion": 1,
+    "file": "scripts/claim-quest.lua",
+    "exportName": "run",
+    "mode": "effect",
+    "capabilities": [
+      "quest.claim"
+    ],
+    "apiVersion": 1
+  }
+]
