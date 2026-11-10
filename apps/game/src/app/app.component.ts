@@ -17,7 +17,7 @@ export class AppComponent {
   readonly values = Object.values; readonly keys = Object.keys; readonly floor = Math.floor;
   send(action: Action) { return this.game.send(action); }
   label(id: string): string { return id.split('.').at(-1)?.replaceAll('-', ' ') ?? id; }
-  clock(s: GameState): string { return `Day ${Math.floor(s.clock.tick / 600) + 1} · ${Math.floor((s.clock.tick % 600) / 25).toString().padStart(2, '0')}:00`; }
+  clock(s: GameState): string { const minutes=Math.floor((s.clock.tick%600)*1440/600); return `Day ${Math.floor(s.clock.tick/600)+1} · ${Math.floor(minutes/60).toString().padStart(2,'0')}:${(minutes%60).toString().padStart(2,'0')}`; }
   pending(s: GameState): number { return s.notifications.filter(n => !n.acknowledged).length; }
   residents(s: GameState): number { return Object.values(s.characters).filter(c => c.controlled).length; }
   contractId(s: GameState, characterId: string): string { return Object.keys(s.contracts).find(id => s.contracts[id].characterId === characterId) ?? ''; }
