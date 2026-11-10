@@ -16,7 +16,8 @@
     "quests/foundation.yaml",
     "scripts/definitions.json",
     "start.json",
-    "world/world.json"
+    "world/world.json",
+    "story/opening.json"
   ],
   "scripts": [
     "scripts/quest-ready.lua",

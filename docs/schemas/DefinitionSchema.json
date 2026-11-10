@@ -751,6 +751,10 @@
           "const": "quest",
           "type": "string"
         },
+        "description": {
+          "maxLength": 2000,
+          "type": "string"
+        },
         "objectives": {
           "minItems": 1,
           "maxItems": 30,
@@ -773,6 +777,10 @@
                 "minLength": 1,
                 "maxLength": 160,
                 "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                "type": "string"
+              },
+              "text": {
+                "maxLength": 300,
                 "type": "string"
               },
               "tracking": {
@@ -1213,6 +1221,197 @@
           "minimum": 0,
           "maximum": 9007199254740991,
           "type": "integer"
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "schemaVersion",
+        "kind",
+        "ancestries",
+        "origins",
+        "backgrounds",
+        "motivations",
+        "portraits"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "maxLength": 120,
+          "type": "string"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "kind": {
+          "const": "creation",
+          "type": "string"
+        },
+        "ancestries": {
+          "additionalProperties": false,
+          "type": "object",
+          "patternProperties": {
+            "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$": {
+              "maxItems": 10000,
+              "type": "array",
+              "items": {
+                "minLength": 1,
+                "maxLength": 160,
+                "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "origins": {
+          "maxItems": 10000,
+          "type": "array",
+          "items": {
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+            "type": "string"
+          }
+        },
+        "backgrounds": {
+          "additionalProperties": false,
+          "type": "object",
+          "patternProperties": {
+            "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        },
+        "motivations": {
+          "maxItems": 10000,
+          "type": "array",
+          "items": {
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+            "type": "string"
+          }
+        },
+        "portraits": {
+          "maxItems": 10000,
+          "type": "array",
+          "items": {
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "schemaVersion",
+        "kind",
+        "npcId",
+        "locationId",
+        "questId",
+        "requires",
+        "text",
+        "choices"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "name": {
+          "minLength": 1,
+          "maxLength": 120,
+          "type": "string"
+        },
+        "schemaVersion": {
+          "const": 1,
+          "type": "number"
+        },
+        "kind": {
+          "const": "interaction",
+          "type": "string"
+        },
+        "npcId": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "locationId": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "questId": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "requires": {
+          "maxItems": 10000,
+          "type": "array",
+          "items": {
+            "minLength": 1,
+            "maxLength": 160,
+            "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+            "type": "string"
+          }
+        },
+        "text": {
+          "maxLength": 4000,
+          "type": "string"
+        },
+        "choices": {
+          "minItems": 1,
+          "maxItems": 10,
+          "type": "array",
+          "items": {
+            "additionalProperties": false,
+            "type": "object",
+            "required": [
+              "id",
+              "text",
+              "response"
+            ],
+            "properties": {
+              "id": {
+                "minLength": 1,
+                "maxLength": 160,
+                "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "response": {
+                "type": "string"
+              }
+            }
+          }
         }
       }
     }

@@ -27,11 +27,10 @@ function modules() {
 export function restoreGame(state: GameState, content: ContentPort, scripts: ScriptPort): Engine {
   assertState(state, content); return new Engine(state, content, scripts, modules());
 }
-export async function createGame(content: ContentPort, scripts: ScriptPort, seed: string): Promise<Engine> {
+export async function createGame(content: ContentPort, scripts: ScriptPort, seed: string, startId = 'base:start.default'): Promise<Engine> {
   requireThat(seed.length > 0 && seed.length <= 120, 'SEED_INVALID', 'Seed must contain 1–120 characters');
   for (const def of content.list('script')) await scripts.validate(content.script(def.file), def.mode);
-  const starts = content.list('start'); requireThat(starts.length === 1, 'CONTENT_START', 'Exactly one start definition is required');
-  const start = starts[0];
+  const start = content.get(startId,'start');
   const state: GameState = { schemaVersion: 1, engineVersion: '0.1.0-alpha.1', contentFingerprint: content.fingerprint,
     seed, playerCharacterId: null, counters: {}, rng: {}, clock: { tick: 0, paused: true, speed: 1 }, characters: {}, relationships: {}, recruitment: {}, contracts: {},
     haven: { locationId: start.locationId, storageCapacity: start.storageCapacity, facilities: {}, researched: [] },

@@ -3,6 +3,29 @@ import { requireThat, partyOf, type DomainModule } from '../contracts/ports';
 export const characters: DomainModule<'characters'> = {
   id: 'characters', slice: 'characters',
   commands: {
+    'characters.create'(ctx, p) {
+      const pc = ctx.read().playerCharacterId;
+      requireThat(pc && ctx.state[pc]?.controlled && !ctx.state[pc].identity, 'IDENTITY_CREATED', 'Identity has already been registered');
+      const choices = ctx.content.list('creation')[0];
+      requireThat(choices && choices.ancestries[p.ancestry]?.includes(p.heritage) && choices.origins.includes(p.origin) &&
+        Object.hasOwn(choices.backgrounds,p.background) && choices.motivations.includes(p.motivation) && choices.portraits.includes(p.portrait), 'IDENTITY_INVALID', 'Choose a valid ancestry, origin, background, motivation and portrait');
+      requireThat(p.name.trim().length > 0, 'NAME_INVALID', 'Enter your name');
+      const char = ctx.state[pc]; char.name = p.name.trim();
+      char.identity = {ancestry:p.ancestry, heritage:p.heritage, origin:p.origin, background:p.background, motivation:p.motivation, portrait:p.portrait, interactions:[],responses:{}};
+      char.skills[choices.backgrounds[p.background]] = 100;
+      ctx.emit('character.created', char.definitionId);
+    },
+    'story.interact'(ctx,p) {
+      const pc = ctx.read().playerCharacterId, char = pc ? ctx.state[pc] : undefined;
+      requireThat(char?.identity, 'IDENTITY_REQUIRED', 'Register your identity first');
+      const scene = ctx.content.get(p.interactionId,'interaction');
+      requireThat(char.locationId === scene.locationId, 'INTERACTION_LOCATION', 'Travel to the conversation location first');
+      requireThat(Object.values(ctx.read().quests).some(q=>q.definitionId===scene.questId && ['active','ready'].includes(q.status)), 'INTERACTION_QUEST', 'Accept the associated quest first');
+      requireThat(!char.identity.interactions.includes(scene.id) && scene.requires.every(id=>char.identity!.interactions.includes(id)), 'INTERACTION_ORDER', 'Conversation is already completed or its prerequisites are missing');
+      const choice = scene.choices.find(c=>c.id===p.choiceId); requireThat(choice,'INTERACTION_CHOICE','Choose an available reply');
+      char.identity.interactions.push(scene.id); char.identity.responses[scene.id]=choice.id;
+      ctx.emit('story.interacted',scene.id); ctx.notify(choice.response,scene.id);
+    },
     'characters.rest'(ctx, p) {
       const char = ctx.state[p.characterId];
       requireThat(char?.controlled, 'CHARACTER_CONTROL', 'Character is not controlled');

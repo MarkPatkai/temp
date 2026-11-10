@@ -6,6 +6,8 @@ A local Angular application and headless TypeScript simulation for the character
 
 This is an architecture development build. It is **not the completed version 0.1 release** or the version 0.2 playable campaign. Read [HANDOVER.md](HANDOVER.md) for the remaining work and native-platform verification gap.
 
+Latest portable story handover: `releases/haven-crossroads-opening.zip`. The older foundation ZIP remains available for historical reference.
+
 ## Try the included build — no package installation
 
 Install **Node.js 24 LTS** (24.15 or later, below 25), extract the ZIP, and run from this directory:
@@ -52,7 +54,20 @@ Windows needs the MSVC C++ build tools and WebView2. macOS needs Xcode command-l
 
 **Native compilation was not verified in cloud:** Rust, Cargo, WebKitGTK development libraries, and librsvg development libraries were unavailable. The ZIP includes the Rust shell, scoped save commands, configuration, and desktop icons, but no executable or native installer. Generate and commit `apps/game/src-tauri/Cargo.lock` during the first successful local native build.
 
-## A manual walkthrough
+## Crossroads opening — current implementation
+
+Read [docs/GAMEPLAY-IMPLEMENTATION.md](docs/GAMEPLAY-IMPLEMENTATION.md) for the complete working inventory and pending scope. The story source is [docs/story/STORY.md](docs/story/STORY.md).
+
+The default UI starts in Veybridge. Choose **Begin character creation**, enter your identity and select **Enter Veybridge**. Speak at the gates, select Mara's introduction, then Borin's briefing. Each deliberate reply advances the tracked quest. Open **Quests** and claim the completed introduction. The Guild assessment and Briarfield deed are the next slice; this introduction does not grant land or invent a workforce.
+
+The resource bar shows current storage stock, active production capacity and daily wage obligations. Facilities and outside parties appear in the right outliner. The portrait opens the PC modal; the name opens acquaintances. Reports retain all messages, while at most three unread popups are visible. Hide popups independently of opening the history list.
+
+New content changes the fingerprint: old saves still require their original content pack. Identity data is additive and optional in the state schema; content migration is still pending. The old technical scenario remains isolated in Diagnostics and still runs against its original foundation start definition.
+
+## Foundation harness walkthrough (headless scenario)
+
+The steps below describe the technical fixture, not the new story start. It deliberately has initial residents and facilities. Use **Diagnostics → Verify architecture** to run it in isolation.
+
 
 1. In **Quests**, accept *Architecture verification* before crafting or exploring. Its objectives are commissioned.
 2. In **Haven & work**, assign Ada to the forge and create one sword order. Advance ten ticks. The order produces a unique item and XP.

@@ -1,3 +1,7 @@
+# Latest increment — Crossroads opening
+
+Character identity, authored dialogue prerequisites/choices, objective notifications and the strategy HUD are now implemented. See docs/GAMEPLAY-IMPLEMENTATION.md for the full inventory. Story sessions start at Veybridge with one controlled newcomer and acquaintances. The assessment, deed and developed Briarfield are still pending. This remains a foundation alpha. Updated browser tests exercise registration, dialogue, claim, modals, persistence and notification settings.
+
 # Local implementation handover
 
 ## What this delivery establishes

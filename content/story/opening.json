@@ -1,0 +1,324 @@
+[
+  {
+    "id": "story:creation.identity",
+    "kind": "creation",
+    "name": "Veybridge registration",
+    "schemaVersion": 1,
+    "ancestries": {
+      "Human": [
+        "Highlander",
+        "Lowlander",
+        "Easterner"
+      ],
+      "Elf": [
+        "High-Elf",
+        "Wood-Elf",
+        "Dark-Elf"
+      ],
+      "Dwarf": [
+        "Mountain-Dwarf",
+        "Deep-Dwarf",
+        "Hill-Dwarf"
+      ],
+      "Orc": [
+        "Plains-Orc",
+        "Iron-Orc",
+        "Ash-Orc"
+      ],
+      "Beastkin": [
+        "Catfolk",
+        "Wolfkin",
+        "Foxfolk"
+      ],
+      "Drakari": [
+        "Emberborn",
+        "Stoneborn",
+        "Stormborn"
+      ],
+      "Half-race": [
+        "Half-Elf",
+        "Half-Orc"
+      ]
+    },
+    "origins": [
+      "Crossroads",
+      "Varric-Empire",
+      "Meridia",
+      "Neutral-Marches"
+    ],
+    "backgrounds": {
+      "Military": "combat",
+      "Scholarly": "research",
+      "Artisan": "smithing",
+      "Merchant": "bartering",
+      "Wanderer": "exploration"
+    },
+    "motivations": [
+      "Adventure",
+      "Settlement",
+      "New-start",
+      "Guild-business",
+      "Private"
+    ],
+    "portraits": [
+      "traveler",
+      "scholar",
+      "artisan"
+    ]
+  },
+  {
+    "id": "story:character.player",
+    "kind": "character",
+    "name": "New arrival",
+    "schemaVersion": 1,
+    "category": "permanent",
+    "playerControlled": true,
+    "hp": 35,
+    "speed": 10,
+    "power": 8,
+    "workRate": 3,
+    "traits": [],
+    "food": {
+      "forbidden": [],
+      "preferred": []
+    }
+  },
+  {
+    "id": "story:character.mara",
+    "kind": "character",
+    "name": "Mara Vell",
+    "schemaVersion": 1,
+    "category": "world",
+    "playerControlled": false,
+    "hp": 35,
+    "speed": 10,
+    "power": 8,
+    "workRate": 3,
+    "traits": [],
+    "food": {
+      "forbidden": [],
+      "preferred": []
+    }
+  },
+  {
+    "id": "story:character.borin",
+    "kind": "character",
+    "name": "Borin Feldspar",
+    "schemaVersion": 1,
+    "category": "world",
+    "playerControlled": false,
+    "hp": 35,
+    "speed": 10,
+    "power": 8,
+    "workRate": 3,
+    "traits": [],
+    "food": {
+      "forbidden": [],
+      "preferred": []
+    }
+  },
+  {
+    "id": "story:character.lucien",
+    "kind": "character",
+    "name": "Lucien Ardent",
+    "schemaVersion": 1,
+    "category": "world",
+    "playerControlled": false,
+    "hp": 35,
+    "speed": 10,
+    "power": 8,
+    "workRate": 3,
+    "traits": [],
+    "food": {
+      "forbidden": [],
+      "preferred": []
+    }
+  },
+  {
+    "id": "story:location.veybridge",
+    "kind": "location",
+    "name": "Veybridge",
+    "schemaVersion": 1,
+    "locationType": "settlement",
+    "recovery": 5,
+    "explorationWork": 5,
+    "encounterId": null
+  },
+  {
+    "id": "story:location.briarfield",
+    "kind": "location",
+    "name": "Briarfield",
+    "schemaVersion": 1,
+    "locationType": "haven",
+    "recovery": 1,
+    "explorationWork": 6,
+    "encounterId": null
+  },
+  {
+    "id": "story:connection.charter-road",
+    "kind": "connection",
+    "name": "The charter road",
+    "schemaVersion": 1,
+    "from": "story:location.veybridge",
+    "to": "story:location.briarfield",
+    "ticks": 30,
+    "requiredUnlock": "story:deed.briarfield"
+  },
+  {
+    "id": "story:start.crossroads",
+    "kind": "start",
+    "name": "A stranger at the gates",
+    "schemaVersion": 1,
+    "locationId": "story:location.veybridge",
+    "characters": [
+      "story:character.player",
+      "story:character.mara",
+      "story:character.borin",
+      "story:character.lucien",
+      "story:character.officer"
+    ],
+    "facilities": [],
+    "items": [
+      {
+        "itemId": "base:item.wood",
+        "quantity": 2
+      }
+    ],
+    "storageCapacity": 8,
+    "gold": 10
+  },
+  {
+    "id": "story:interaction.gate",
+    "kind": "interaction",
+    "name": "At the city gates",
+    "schemaVersion": 1,
+    "npcId": "story:character.officer",
+    "locationId": "story:location.veybridge",
+    "questId": "story:quest.stranger",
+    "requires": [],
+    "text": "Welcome to Crossroads. Whatever you were before you arrived, you are free to become someone else here.",
+    "choices": [
+      {
+        "id": "register",
+        "text": "Present your registration.",
+        "response": "Your entry is recorded. The Guild Hall is across the square."
+      }
+    ]
+  },
+  {
+    "id": "story:interaction.mara",
+    "kind": "interaction",
+    "name": "A home for those willing to build one",
+    "schemaVersion": 1,
+    "npcId": "story:character.mara",
+    "locationId": "story:location.veybridge",
+    "questId": "story:quest.stranger",
+    "requires": [
+      "story:interaction.gate"
+    ],
+    "text": "Welcome to the Adventurers\u2019 Guild. If you are here for the Open Charter, you are in the right place. You do not need to become a hero. First, find out what you can do.",
+    "choices": [
+      {
+        "id": "settle",
+        "text": "I want a place to settle.",
+        "response": "A workshop, a farm, a home \u2014 the charter leaves that choice to you."
+      },
+      {
+        "id": "adventure",
+        "text": "I would like to become an adventurer.",
+        "response": "Then we will help you prepare. There is more than one way to contribute."
+      },
+      {
+        "id": "private",
+        "text": "I am still deciding.",
+        "response": "There is no need to choose your whole life today."
+      }
+    ]
+  },
+  {
+    "id": "story:interaction.borin",
+    "kind": "interaction",
+    "name": "Read the fine print",
+    "schemaVersion": 1,
+    "npcId": "story:character.borin",
+    "locationId": "story:location.veybridge",
+    "questId": "story:quest.stranger",
+    "requires": [
+      "story:interaction.mara"
+    ],
+    "text": "A sword protects you from bandits. A properly registered deed protects you from everyone else. Briarfield has a damaged foundation, a neglected well and room to build. First, you must complete the Guild assessment.",
+    "choices": [
+      {
+        "id": "rights",
+        "text": "Ask about passage and existing land rights.",
+        "response": "The charter respects existing property and passage rights. Unoccupied on a map does not always mean unused."
+      },
+      {
+        "id": "assessment",
+        "text": "Ask what the assessment involves.",
+        "response": "Combat, craft, magic or exploration. Speak to the Guild when you are ready; your profession remains your choice."
+      }
+    ]
+  },
+  {
+    "id": "story:quest.stranger",
+    "kind": "quest",
+    "name": "A Stranger at the Gates",
+    "schemaVersion": 1,
+    "objectives": [
+      {
+        "id": "gate",
+        "tracking": "commissioned",
+        "event": "story.interacted",
+        "subjectId": "story:interaction.gate",
+        "amount": 1,
+        "itemId": null,
+        "contribution": "shared",
+        "exclusiveGroup": null,
+        "text": "Register at the city gates"
+      },
+      {
+        "id": "mara",
+        "tracking": "commissioned",
+        "event": "story.interacted",
+        "subjectId": "story:interaction.mara",
+        "amount": 1,
+        "itemId": null,
+        "contribution": "shared",
+        "exclusiveGroup": null,
+        "text": "Meet Mara at the Guild Hall"
+      },
+      {
+        "id": "borin",
+        "tracking": "commissioned",
+        "event": "story.interacted",
+        "subjectId": "story:interaction.borin",
+        "amount": 1,
+        "itemId": null,
+        "contribution": "shared",
+        "exclusiveGroup": null,
+        "text": "Discuss charter terms with Borin"
+      }
+    ],
+    "gold": 0,
+    "conditionScript": "base:script.quest-ready",
+    "description": "Find your footing in Veybridge: register your arrival, meet Commissioner Mara Vell, and understand the Open Charter before choosing an assessment."
+  },
+  {
+    "id": "story:character.officer",
+    "kind": "character",
+    "name": "Gate Officer",
+    "schemaVersion": 1,
+    "category": "world",
+    "playerControlled": false,
+    "hp": 35,
+    "speed": 10,
+    "power": 8,
+    "workRate": 3,
+    "traits": [],
+    "food": {
+      "forbidden": [],
+      "preferred": []
+    }
+  }
+]

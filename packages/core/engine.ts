@@ -1,5 +1,5 @@
 import { CommandSchema, type Action, type Command, type CommandType, type DomainEvent, type GameState, type Result, type StateKey } from '../contracts/schema';
-import { GameError, requireThat, type ContentPort, type Context, type DomainModule, type Effects, type ScriptPort } from '../contracts/ports';
+import { GameError, requireThat, isAvailable, type ContentPort, type Context, type DomainModule, type Effects, type ScriptPort } from '../contracts/ports';
 import { canonical, validate } from '../contracts/validation';
 import { assertState } from './invariants';
 import { next, seedStream } from './rng';
@@ -28,6 +28,17 @@ export class Engine {
       for (const name of Object.keys(module.commands ?? {}) as CommandType[]) { requireThat(!this.commands.has(name), 'MODULE_DUPLICATE', name); this.commands.set(name, module); }
       for (const name of Object.keys(module.effects ?? {}) as (keyof Effects)[]) { requireThat(!this.effects.has(name), 'MODULE_DUPLICATE', name); this.effects.set(name, module); }
     }
+  }
+  production(): Record<string, number> {
+    const result: Record<string,number> = {}, state=this.committed;
+    for(const order of Object.values(state.jobs.orders)) {
+      if(order.kind!=='craft'||order.status!=='running'||!order.workerId||!isAvailable(state,order.workerId)) continue;
+      const recipe=this.content.get(order.definitionId,'recipe'), char=state.characters[order.workerId];
+      const modifier=10000+char.traits.reduce((n,t)=>n+t.workBonus,0)+Math.floor((char.skills[recipe.skill]??0)/100)*100;
+      const rate=Math.max(1,Math.floor(char.workRate*modifier/10000));
+      for(const output of recipe.outputs) result[output.itemId]=(result[output.itemId]??0)+output.quantity*rate/recipe.work;
+    }
+    return result;
   }
   snapshot(): GameState { return structuredClone(this.committed); }
   view(): GameState {
@@ -140,7 +151,7 @@ export class Engine {
         const s = engine.current(), sequence = ++s.lastEventSequence;
         const event: DomainEvent = { id: `event-${sequence}`, sequence, tick: s.clock.tick, type, subjectId: subjectId ?? null, quantity, cause: engine.cause };
         s.events.push(event); if (s.events.length > 500) s.events.shift();
-        if (['job.completed', 'combat.victory', 'exploration.surveyed', 'inventory.item-created', 'travel.arrived'].includes(type)) s.history.push(event);
+        if (['job.completed', 'combat.victory', 'exploration.surveyed', 'inventory.item-created', 'travel.arrived', 'story.interacted'].includes(type)) s.history.push(event);
         engine.pending.push(event);
       },
       notify(message, subjectId, action, severity = 'info') {

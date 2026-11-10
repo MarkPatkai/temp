@@ -8,21 +8,24 @@ import zipfile
 
 root = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser()
+parser.add_argument('--name', default='haven-foundation-0.1.0-alpha.1.zip')
 parser.add_argument('--output-dir', type=Path, default=root.parent / 'output')
 args = parser.parse_args()
 destination = args.output_dir.resolve()
 if destination == root or root in destination.parents:
     raise SystemExit('Choose an output directory outside the project to avoid recursive packaging.')
 destination.mkdir(parents=True, exist_ok=True)
-name = 'haven-foundation-0.1.0-alpha.1.zip'
-excluded = {'node_modules', '.angular', '.git', 'target', 'test-results', 'playwright-report', '__pycache__', 'gen'}
+name = args.name
+if Path(name).name != name or not name.endswith('.zip'):
+    raise SystemExit('Archive name must be a ZIP basename.')
+excluded = {'releases', 'node_modules', '.angular', '.git', 'target', 'test-results', 'playwright-report', '__pycache__', 'gen'}
 with zipfile.ZipFile(destination / name, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
     manifest = []
     for file in sorted(root.rglob('*')):
         relative = file.relative_to(root)
         if not file.is_file() or file.is_symlink() or any(p in excluded for p in relative.parts):
             continue
-        if file.name.startswith('.env') or file.suffix in {'.tmp', '.log', '.tsbuildinfo'}:
+        if file.name == 'ARTIFACT-MANIFEST.json' or file.name.startswith('.env') or file.suffix in {'.tmp', '.log', '.tsbuildinfo'}:
             continue
         if relative.parts[:4] in {('apps', 'game', 'src-tauri', 'icons')} and any(p in {'android', 'ios'} for p in relative.parts):
             continue

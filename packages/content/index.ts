@@ -61,6 +61,10 @@ export class ContentRegistry implements ContentPort {
     for (const d of this.definitions.values()) {
       try {
         switch (d.kind) {
+          case 'interaction': this.get(d.npcId,'character'); this.get(d.locationId,'location'); this.get(d.questId,'quest');
+            requireThat(new Set(d.choices.map(c=>c.id)).size===d.choices.length,'CONTENT_DUPLICATE','Duplicate dialogue choice');
+            for (const id of d.requires) this.get(id,'interaction');
+            { const walk=(id:string, chain:string[]):void=>{requireThat(!chain.includes(id),'CONTENT_CYCLE','Dialogue prerequisites contain a cycle');for(const parent of this.get(id,'interaction').requires) walk(parent,[...chain,id]);};walk(d.id,[]); } break;
           case 'recipe': this.get(d.facilityId, 'facility'); for (const q of [...d.inputs, ...d.outputs]) this.get(q.itemId, 'item'); break;
           case 'research': this.get(d.facilityId, 'facility'); break;
           case 'connection': this.get(d.from, 'location'); this.get(d.to, 'location'); requireThat(d.from !== d.to, 'CONTENT_REFERENCE', 'Self connection'); break;

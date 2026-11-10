@@ -40,8 +40,8 @@ export const AbilityDefinitionSchema = object({ ...base, kind: T.Literal('abilit
 export const EncounterDefinitionSchema = object({ ...base, kind: T.Literal('encounter'),
   enemies: T.Array(id, { minItems: 1, maxItems: 8 }), abilities: T.Array(id, { minItems: 1 }),
   gold: integer, surrender: T.Boolean() });
-export const QuestDefinitionSchema = object({ ...base, kind: T.Literal('quest'),
-  objectives: T.Array(object({ id,
+export const QuestDefinitionSchema = object({ ...base, kind: T.Literal('quest'), description:T.Optional(T.String({maxLength:2000})),
+  objectives: T.Array(object({ id, text:T.Optional(T.String({maxLength:300})),
     tracking: T.Union(['world-state', 'historical', 'commissioned'].map(v => T.Literal(v))),
     event: T.String({ minLength: 1, maxLength: 120 }), subjectId: nullableId, amount: positive,
     itemId: nullableId, contribution: T.Union(['shared', 'exclusive', 'consumptive'].map(v => T.Literal(v))),
@@ -58,17 +58,23 @@ export const ScriptDefinitionSchema = object({ ...base, kind: T.Literal('script'
 export const StartDefinitionSchema = object({ ...base, kind: T.Literal('start'), locationId: id,
   characters: T.Array(id, { minItems: 1, maxItems: 10, uniqueItems: true }), facilities: ids,
   items: quantities, storageCapacity: positive, gold: integer });
+export const CreationDefinitionSchema = object({ ...base, kind: T.Literal('creation'),
+  ancestries: record(ids), origins: ids, backgrounds: record(id), motivations: ids, portraits: ids });
+export const InteractionDefinitionSchema = object({ ...base, kind: T.Literal('interaction'), npcId: id, locationId: id,
+  questId: id, requires: ids, text: T.String({maxLength:4000}), choices: T.Array(object({id, text:T.String(), response:T.String()}), {minItems:1,maxItems:10}) });
 export const DefinitionSchema = T.Union([CharacterDefinitionSchema, ItemDefinitionSchema,
   FacilityDefinitionSchema, RecipeDefinitionSchema, ResearchDefinitionSchema, LocationDefinitionSchema,
   ConnectionDefinitionSchema, AbilityDefinitionSchema, EncounterDefinitionSchema, QuestDefinitionSchema,
-  RecruitDefinitionSchema, MarketDefinitionSchema, ScriptDefinitionSchema, StartDefinitionSchema]);
+  RecruitDefinitionSchema, MarketDefinitionSchema, ScriptDefinitionSchema, StartDefinitionSchema, CreationDefinitionSchema, InteractionDefinitionSchema]);
 export type Definition = Static<typeof DefinitionSchema>;
 export type Def<K extends Definition['kind']> = Extract<Definition, { kind: K }>;
 export const ManifestSchema = object({ packId: id, version: id, schemaVersion: T.Literal(1),
   files: T.Array(id, { minItems: 1, maxItems: 200 }), scripts: T.Array(id, { maxItems: 100 }) });
 export type Manifest = Static<typeof ManifestSchema>;
 
-export const CharacterSchema = object({ id, definitionId: id, name: T.String(), category,
+export const IdentitySchema = object({ ancestry:id, heritage:id, origin:id, background:id, motivation:id, portrait:id,
+  interactions:ids, responses:record(id) });
+export const CharacterSchema = object({ identity:T.Optional(IdentitySchema), id, definitionId: id, name: T.String(), category,
   controlled: T.Boolean(), locationId: id, hp: integer, maxHp: positive,
   stamina: integer, mana: integer, speed: positive, power: positive, workRate: positive,
   hunger: T.Integer({ minimum: 0, maximum: 10000 }), rest: T.Integer({ minimum: 0, maximum: 10000 }),
@@ -176,6 +182,8 @@ export const CommandSchema = T.Union([
   cmd('combat.act', { combatId: id, actorId: id, targetId: id, abilityId: id }),
   cmd('combat.escape', { combatId: id, actorId: id }),
   cmd('combat.enemy-turn', { combatId: id }),
+  cmd('characters.create', { name:T.String({minLength:1,maxLength:60}), ancestry:id, heritage:id, origin:id, background:id, motivation:id, portrait:id }),
+  cmd('story.interact', { interactionId:id, choiceId:id }),
   cmd('characters.rest', { characterId: id }),
   cmd('characters.stop-rest', { characterId: id }),
   cmd('characters.designate-pc', { characterId: id }),

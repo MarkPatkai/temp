@@ -1,6 +1,8 @@
 # Validation record
 
-Date: 2026-11-09. This record describes the alpha handover, not a completed 0.1 release.
+Date: 2026-11-10. This record describes the alpha handover, not a completed 0.1 release.
+
+The updated user lockfile initially failed clean installation due to missing optional emnapi entries. The lockfile was repaired; `npm ci`, the full verification command and all browser tests passed afterward.
 
 ## Executed successfully
 
@@ -12,12 +14,14 @@ Date: 2026-11-09. This record describes the alpha handover, not a completed 0.1 
 | Angular strict template compilation | Passed |
 | JSON/YAML definitions and typed references | Passed |
 | Lua syntax/exports and sample invocations | Passed |
-| Vitest headless tests | **62 passed**, 6 files |
+| Vitest headless tests | **67 passed**, 7 files |
 | Full deterministic integration scenario | **7 checks passed** |
 | Angular production build | Passed |
 | Chromium browser acceptance | **4 passed** |
 | Fresh ZIP extraction: npm ci, complete verification, scenario, production browser tests | Passed in a separate directory |
 | Development server: Angular/Lua startup and isolated scenario in Chromium | Passed |
+
+The current browser tests cover the Crossroads opening: identity creation, ordered dialogue choices, journal claim, PC/companion modals, three-toast limit, inbox preference, save/load/export and responsive HUD; Diagnostics still verifies the original isolated scenario. The earlier initial-alpha fresh extraction and development-server checks below are historical verification, not a new native platform claim.
 
 The browser tests run against the actual production files with a CSP that permits local WASM but excludes general JavaScript `unsafe-eval`. They verify successful initialization and styling, the isolated Lua integration scenario, no page exceptions/external runtime requests, IndexedDB save/reload, JSON download, rejected invalid import, UI work/quest/manual combat, and narrow-screen operation.
 
@@ -30,13 +34,13 @@ Seed: `foundation-001`
 Content SHA-256:
 
 ```text
-087d672b8d451d3cec24bae7b093e0b49e967f4679e485350719bceb0ccc605d
+d97d2b7da74901463f45bd6215657a1418961df6817514b44a987a00f383f6a9
 ```
 
 Canonical final state SHA-256 from `npm run verify:scenario`:
 
 ```text
-3f8706d7b69754d890964df31d2799c3fd806a92ceb0608faa0a0884ae698094
+77cda6fc9c8777aae7b98d478cc2f145d471d19b671181b23979613060e31e3e
 ```
 
 The scenario uses explicit fixed command IDs and test-only choices. It is not a player automation policy. A separate test repeats the scenario and compares the complete state, including command receipts and RNG. The scenario itself checks save/reload continuation against the uninterrupted engine.

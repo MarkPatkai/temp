@@ -156,6 +156,80 @@
             "traits"
           ],
           "properties": {
+            "identity": {
+              "additionalProperties": false,
+              "type": "object",
+              "required": [
+                "ancestry",
+                "heritage",
+                "origin",
+                "background",
+                "motivation",
+                "portrait",
+                "interactions",
+                "responses"
+              ],
+              "properties": {
+                "ancestry": {
+                  "minLength": 1,
+                  "maxLength": 160,
+                  "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                  "type": "string"
+                },
+                "heritage": {
+                  "minLength": 1,
+                  "maxLength": 160,
+                  "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                  "type": "string"
+                },
+                "origin": {
+                  "minLength": 1,
+                  "maxLength": 160,
+                  "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                  "type": "string"
+                },
+                "background": {
+                  "minLength": 1,
+                  "maxLength": 160,
+                  "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                  "type": "string"
+                },
+                "motivation": {
+                  "minLength": 1,
+                  "maxLength": 160,
+                  "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                  "type": "string"
+                },
+                "portrait": {
+                  "minLength": 1,
+                  "maxLength": 160,
+                  "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                  "type": "string"
+                },
+                "interactions": {
+                  "maxItems": 10000,
+                  "type": "array",
+                  "items": {
+                    "minLength": 1,
+                    "maxLength": 160,
+                    "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                    "type": "string"
+                  }
+                },
+                "responses": {
+                  "additionalProperties": false,
+                  "type": "object",
+                  "patternProperties": {
+                    "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$": {
+                      "minLength": 1,
+                      "maxLength": 160,
+                      "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
             "id": {
               "minLength": 1,
               "maxLength": 160,

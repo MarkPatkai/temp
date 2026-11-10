@@ -1235,6 +1235,126 @@
           "type": "string"
         },
         "type": {
+          "const": "characters.create",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "name",
+            "ancestry",
+            "heritage",
+            "origin",
+            "background",
+            "motivation",
+            "portrait"
+          ],
+          "properties": {
+            "name": {
+              "minLength": 1,
+              "maxLength": 60,
+              "type": "string"
+            },
+            "ancestry": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "heritage": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "origin": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "background": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "motivation": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "portrait": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
+          "const": "story.interact",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "interactionId",
+            "choiceId"
+          ],
+          "properties": {
+            "interactionId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            },
+            "choiceId": {
+              "minLength": 1,
+              "maxLength": 160,
+              "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    {
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "payload"
+      ],
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "maxLength": 160,
+          "pattern": "^(?!(?:__proto__|prototype|constructor)$)[a-zA-Z0-9:._/-]+$",
+          "type": "string"
+        },
+        "type": {
           "const": "characters.rest",
           "type": "string"
         },

@@ -15,6 +15,7 @@ export class GameFacade {
   readonly message = signal('Loading validated content and Lua…');
   readonly error = signal(false);
   readonly verification = signal<string[]>([]);
+  readonly rates = signal<Record<string,number>>({});
   content!: ContentRegistry;
   private engine!: Engine;
   private scripts = new LuaSandbox(new URL('runtime/lua.wasm', document.baseURI).href);
@@ -32,7 +33,7 @@ export class GameFacade {
         const res = await fetch(`content/${file}`); if (!res.ok) throw new Error(`Missing content ${file}`); files[file] = await res.text();
       }));
       this.content = await ContentRegistry.load(text, files);
-      this.engine = await createGame(this.content, this.scripts, 'thornhaven-001');
+      this.engine = await createGame(this.content, this.scripts, 'crossroads-001', 'story:start.crossroads');
       // Probe the actual WASM runtime before reporting initialization complete.
       await this.scripts.condition('function run(ctx) return ctx.clock.tick() == 0 end', { tick: 0, questId: 'startup', objectivesComplete: false, itemCounts: {} });
       if ('__TAURI_INTERNALS__' in window) {
@@ -55,7 +56,7 @@ export class GameFacade {
     this.busy.set(true); this.error.set(false);
     try { await work(); }
     catch (error) { console.error('Haven operation failed', error); this.error.set(true); this.message.set(String(error)); }
-    finally { if (this.engine) this.state.set(this.engine.view()); this.busy.set(false); }
+    finally { if (this.engine) { this.state.set(this.engine.view()); this.rates.set(this.engine.production()); } this.busy.set(false); }
   }
   async send(action: Action): Promise<void> {
     await this.perform(async () => {
@@ -77,7 +78,7 @@ export class GameFacade {
     });
   }
   async newWorld(seed: string): Promise<void> {
-    await this.perform(async () => { const next = await createGame(this.content, this.scripts, seed); this.engine = next; this.accumulator = 0; this.message.set(`New world: ${seed}`); });
+    await this.perform(async () => { const next = await createGame(this.content, this.scripts, seed, 'story:start.crossroads'); this.engine = next; this.accumulator = 0; this.message.set(`New world: ${seed}`); });
   }
   async save(): Promise<void> {
     await this.perform(async () => { await this.storage.write('manual', await serialize(this.engine.snapshot())); this.message.set('Saved to the local manual slot.'); });

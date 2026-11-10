@@ -44,7 +44,7 @@ export const quests: DomainModule<'quests'> = {
       const q: Quest = { id, definitionId: def.id, acceptedSequence: ctx.read().lastEventSequence, status: 'active', progress: {}, rewardReceipt: null };
       ctx.state[id] = q;
       for (const o of def.objectives) if (o.tracking === 'historical') for (const event of ctx.read().history) contribution(ctx, q, o, event);
-      refresh(ctx, q); ctx.emit('quest.accepted', def.id);
+      refresh(ctx, q); ctx.emit('quest.accepted', def.id); ctx.notify(`Quest accepted: ${def.name}`,q.id,'quests.claim');
     },
     'quests.claim'(ctx, p) { return claim(ctx, p.questId); },
     'quests.abandon'(ctx, p) {
@@ -68,10 +68,13 @@ export const quests: DomainModule<'quests'> = {
   }, react(ctx, event) {
     for (const q of Object.values(ctx.state).sort((a, b) => a.id < b.id ? -1 : 1)) {
       if (!['active', 'ready'].includes(q.status)) continue;
+      const before = {...q.progress}; const wasReady = q.status==='ready';
       for (const o of ctx.content.get(q.definitionId, 'quest').objectives) {
         if (o.tracking === 'historical' || (o.tracking === 'commissioned' && event.sequence > q.acceptedSequence)) contribution(ctx, q, o, event);
       }
       refresh(ctx, q);
+      for (const o of ctx.content.get(q.definitionId,'quest').objectives) if ((before[o.id]??0)<o.amount && (q.progress[o.id]??0)>=o.amount) ctx.notify(`Objective completed: ${o.id}`,q.id);
+      if (!wasReady && q.status==='ready') ctx.notify('Quest ready to turn in.',q.id,'quests.claim');
     }
   },
 };
